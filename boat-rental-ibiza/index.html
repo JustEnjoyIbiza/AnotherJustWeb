@@ -411,6 +411,146 @@
     .jei-boat-modal-body{padding:24px 22px}
     .jei-boat-modal-name{font-size:24px}
   }
+
+  /* ============================================================
+     POLISH FIXES — header, featured card, author photos, form
+     ============================================================ */
+
+  /* ---- 1. Premium header + top bar ---- */
+  .top-bar{background:#080828 !important;padding:9px 20px !important;border:none !important;font-family:'Inter',sans-serif}
+  .top-bar .container{max-width:1280px;margin:0 auto}
+  .top-bar .contact-info{display:flex !important;justify-content:flex-end !important;gap:28px !important;font-size:12px !important;letter-spacing:0.06em}
+  .top-bar .contact-info a{color:rgba(245,241,230,0.78) !important;text-decoration:none;transition:color .2s;font-weight:400}
+  .top-bar .contact-info a:hover{color:#B8943C !important}
+  .top-bar .contact-info a i{color:#B8943C !important;margin-right:8px;font-size:11px}
+  .main-header{background:rgba(250,246,238,0.97) !important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:0 !important;border-bottom:1px solid rgba(184,148,60,0.2) !important;position:sticky !important;top:0;z-index:50;box-shadow:none !important}
+  .main-header .header-container{max-width:1280px !important;margin:0 auto !important;padding:16px 32px !important;display:flex !important;align-items:center !important;justify-content:space-between !important;gap:30px;flex-wrap:nowrap}
+  .main-header .logo{flex-shrink:0}
+  .main-header .logo a{display:block;line-height:0}
+  .main-header .logo-image{max-height:46px !important;width:auto !important;display:block}
+  .main-header .main-nav{flex-grow:0 !important}
+  .main-header .main-nav ul{display:flex !important;list-style:none !important;gap:38px !important;margin:0 !important;padding:0 !important;align-items:center}
+  .main-header .main-nav ul li{margin:0 !important}
+  .main-header .main-nav ul li a{font-family:'Inter',sans-serif !important;font-size:12px !important;letter-spacing:0.2em !important;color:#0a0a3c !important;text-decoration:none;font-weight:600;text-transform:uppercase;transition:color .2s}
+  .main-header .main-nav ul li a:hover{color:#B8943C !important}
+  .main-header .main-nav ul li a.btn-book{display:inline-block !important;padding:11px 26px !important;background:#0a0a3c !important;color:#F5F1E6 !important;font-size:11px !important;letter-spacing:0.24em !important;font-weight:700 !important;border-radius:0 !important;border:1px solid #0a0a3c !important;transition:all .3s}
+  .main-header .main-nav ul li a.btn-book:hover{background:#B8943C !important;color:#0a0a3c !important;border-color:#B8943C !important}
+  .main-header .hamburger-menu{display:none}
+  @media (max-width:900px){
+    .main-header .header-container{padding:14px 20px !important}
+    .main-header .main-nav{display:none}
+    .main-header .hamburger-menu{display:flex !important;cursor:pointer;width:30px;height:30px;align-items:center;justify-content:center}
+    .main-header .hamburger-icon{display:flex;flex-direction:column;gap:6px}
+    .main-header .hamburger-icon span{width:26px;height:1.5px;background:#0a0a3c;display:block}
+    .top-bar .contact-info{justify-content:center !important;font-size:11px !important;gap:18px}
+  }
+
+  /* ---- 2. Featured DeAntonio 34 spans full row ---- */
+  .rental-card.featured{
+    grid-column:1 / -1 !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    background:#0a0a3c !important;
+    color:#F5F1E6 !important;
+    border:1px solid rgba(184,148,60,0.2) !important;
+  }
+  .rental-card.featured .rental-card-img{height:100% !important;min-height:440px}
+  .rental-card.featured .rental-card-img::after{background:linear-gradient(90deg,rgba(10,10,60,0.1) 60%,#0a0a3c 100%) !important}
+  .rental-card.featured .rental-card-name{display:none !important}
+  .rental-card.featured .rental-card-body{padding:50px !important;background:#0a0a3c !important;color:#F5F1E6 !important;display:flex !important;flex-direction:column !important;justify-content:center !important;gap:0}
+  .rental-card-badge{background:#B8943C !important;color:#0a0a3c !important;font-weight:700 !important;font-size:10px !important;letter-spacing:0.28em !important;padding:7px 14px !important;top:20px !important;left:20px !important}
+  .rental-card-featured-title{font-family:'Playfair Display',Georgia,serif !important;color:#F5F1E6 !important;font-size:34px !important;font-weight:500 !important;margin:0 0 14px !important;letter-spacing:-0.01em}
+  .rental-card-featured-desc{color:rgba(245,241,230,0.78) !important;font-size:15.5px !important;line-height:1.7 !important;margin:0 0 26px !important}
+  .rental-card-featured-specs{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:8px !important;margin-bottom:30px !important;border-top:1px solid rgba(184,148,60,0.25) !important;border-bottom:1px solid rgba(184,148,60,0.25) !important;padding:18px 0 !important}
+  .rental-card-featured-spec{background:transparent !important;padding:0 !important;text-align:center;border-radius:0 !important}
+  .rental-card-featured-spec i{color:#B8943C !important;font-size:18px !important;display:block !important;margin-bottom:6px !important}
+  .rental-card-featured-spec strong{color:#F5F1E6 !important;font-size:18px !important;display:block !important;font-weight:600 !important}
+  .rental-card-featured-spec span{color:rgba(245,241,230,0.5) !important;font-size:10px !important;letter-spacing:0.16em;text-transform:uppercase}
+  .rental-card-featured-cta{display:flex !important;justify-content:space-between !important;align-items:center !important;gap:16px}
+  .rental-card-featured-price small{color:rgba(245,241,230,0.55) !important;font-size:10px !important;letter-spacing:0.16em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .rental-card-featured-price strong{color:#B8943C !important;font-size:24px !important;font-family:'Playfair Display',serif !important;font-weight:500 !important;letter-spacing:-0.01em}
+  .rental-card-featured-button{background:#B8943C !important;color:#0a0a3c !important;border:1px solid #B8943C !important;padding:13px 30px !important;font-family:'Inter',sans-serif !important;font-size:11px !important;letter-spacing:0.28em !important;font-weight:700 !important;text-transform:uppercase;border-radius:0 !important;transition:all .3s;cursor:pointer}
+  .rental-card-featured-button:hover{background:transparent !important;color:#B8943C !important}
+  @media (max-width:900px){
+    .rental-card.featured{grid-template-columns:1fr !important}
+    .rental-card.featured .rental-card-img{min-height:280px !important;height:280px !important}
+    .rental-card.featured .rental-card-img::after{background:linear-gradient(180deg,transparent 40%,#0a0a3c 100%) !important}
+    .rental-card.featured .rental-card-body{padding:36px 28px !important}
+    .rental-card-featured-title{font-size:28px !important}
+  }
+
+  /* ---- 3. Testimonial author photo properly contained ---- */
+  .testimonial-author{display:flex !important;align-items:center !important;gap:14px !important;padding-top:18px !important;border-top:1px solid #e8e6de !important;flex-direction:row !important;margin:0 !important}
+  .testimonial-author .author-info{order:2 !important;flex:1 !important;min-width:0 !important}
+  .testimonial-author .author-image{
+    order:1 !important;
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    max-width:52px !important;
+    min-height:52px !important;
+    max-height:52px !important;
+    border-radius:50% !important;
+    overflow:hidden !important;
+    flex-shrink:0 !important;
+    background:#0a0a3c !important;
+    position:relative !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:2px solid #B8943C !important;
+    box-sizing:border-box !important
+  }
+  .testimonial-author .author-image img{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    display:block !important;
+    border-radius:50% !important;
+    margin:0 !important;
+    padding:0 !important;
+    position:absolute !important;
+    top:0 !important;
+    left:0 !important
+  }
+
+  /* ---- 4. Form text readability — no shadows, full contrast ---- */
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea{
+    width:100% !important;
+    padding:14px 16px !important;
+    border:1px solid #d8d4c8 !important;
+    background:#fff !important;
+    font-family:'Inter',sans-serif !important;
+    font-size:15px !important;
+    color:#0a0a3c !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+    text-shadow:none !important;
+    -webkit-text-fill-color:#0a0a3c !important;
+    opacity:1 !important;
+    transition:border-color .2s
+  }
+  .contact-form input::placeholder{color:#999 !important;opacity:1 !important;text-shadow:none !important;-webkit-text-fill-color:#999 !important}
+  .contact-form input::-webkit-input-placeholder{color:#999 !important;opacity:1 !important;-webkit-text-fill-color:#999 !important}
+  .contact-form input::-moz-placeholder{color:#999 !important;opacity:1 !important}
+  .contact-form select{color:#0a0a3c !important;-webkit-text-fill-color:#0a0a3c !important}
+  .contact-form select option{color:#0a0a3c !important;background:#fff !important;text-shadow:none !important}
+  .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:#B8943C !important;outline:none !important;box-shadow:none !important}
+  .contact-form input:-webkit-autofill,
+  .contact-form input:-webkit-autofill:hover,
+  .contact-form input:-webkit-autofill:focus{
+    -webkit-text-fill-color:#0a0a3c !important;
+    -webkit-box-shadow:0 0 0 1000px #fff inset !important;
+    box-shadow:0 0 0 1000px #fff inset !important;
+    caret-color:#0a0a3c !important
+  }
+  .contact-form label{color:#0a0a3c !important;text-shadow:none !important;-webkit-text-fill-color:#0a0a3c !important;opacity:1 !important}
+  .contact-form .country-selector select{padding-left:50px !important;color:#0a0a3c !important;-webkit-text-fill-color:#0a0a3c !important}
   </style>
 </head>
 <body>
