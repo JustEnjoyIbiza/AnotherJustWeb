@@ -184,6 +184,58 @@
       ]
     }
     </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+.pe{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.4em;color:#B8943C;font-weight:600;margin-bottom:22px;text-transform:uppercase;position:relative;padding:0 28px}
+.pe::before,.pe::after{content:"";position:absolute;top:50%;width:20px;height:1px;background:#B8943C}
+.pe::before{left:0}
+.pe::after{right:0}
+
+.top-bar{background:#080828 !important;padding:9px 20px !important;border:none !important;font-family:'Inter',sans-serif}
+.top-bar .container{max-width:1280px;margin:0 auto}
+.top-bar .contact-info{display:flex !important;justify-content:flex-end !important;gap:28px !important;font-size:12px !important;letter-spacing:0.06em}
+.top-bar .contact-info a{color:rgba(245,241,230,0.78) !important;text-decoration:none;transition:color .2s;font-weight:400}
+.top-bar .contact-info a:hover{color:#B8943C !important}
+.top-bar .contact-info a i{color:#B8943C !important;margin-right:8px;font-size:11px}
+
+.main-header{background:rgba(250,246,238,0.97) !important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:0 !important;border-bottom:1px solid rgba(184,148,60,0.2) !important;position:sticky !important;top:0;z-index:50;box-shadow:none !important}
+.main-header .header-container{max-width:1280px !important;margin:0 auto !important;padding:16px 32px !important;display:flex !important;align-items:center !important;justify-content:space-between !important;gap:30px;flex-wrap:nowrap}
+.main-header .logo{flex-shrink:0}
+.main-header .logo a{display:block;line-height:0}
+.main-header .logo-image{max-height:46px !important;width:auto !important;display:block}
+.main-header .main-nav{flex-grow:0 !important}
+.main-header .main-nav ul{display:flex !important;list-style:none !important;gap:38px !important;margin:0 !important;padding:0 !important;align-items:center}
+.main-header .main-nav ul li{margin:0 !important}
+.main-header .main-nav ul li a{font-family:'Inter',sans-serif !important;font-size:12px !important;letter-spacing:0.2em !important;color:#0a0a3c !important;text-decoration:none;font-weight:600;text-transform:uppercase;transition:color .2s}
+.main-header .main-nav ul li a:hover{color:#B8943C !important}
+.main-header .main-nav ul li a.btn-book{display:inline-block !important;padding:11px 26px !important;background:#0a0a3c !important;color:#F5F1E6 !important;font-size:11px !important;letter-spacing:0.24em !important;font-weight:700 !important;border-radius:0 !important;border:1px solid #0a0a3c !important;transition:all .3s}
+.main-header .main-nav ul li a.btn-book:hover{background:#B8943C !important;color:#0a0a3c !important;border-color:#B8943C !important}
+.main-header .hamburger-menu{display:none}
+@media (max-width:900px){
+  .main-header .header-container{padding:14px 20px !important}
+  .main-header .main-nav{display:none}
+  .main-header .hamburger-menu{display:flex !important;cursor:pointer;width:30px;height:30px;align-items:center;justify-content:center}
+  .main-header .hamburger-icon{display:flex;flex-direction:column;gap:6px}
+  .main-header .hamburger-icon span{width:26px;height:1.5px;background:#0a0a3c;display:block}
+  .top-bar .contact-info{justify-content:center !important;font-size:11px !important;gap:18px}
+}
+
+.hero{position:relative;min-height:620px !important;background:linear-gradient(180deg,rgba(10,10,60,0.5) 0%,rgba(10,10,60,0.85) 100%),url('/assets/img/boats/DeAntonioYachts_D50_21-scaled.jpg') center/cover !important;color:#F5F1E6 !important;display:flex !important;align-items:center !important;justify-content:center !important;padding:90px 24px !important;text-align:center !important}
+.hero-content{max-width:880px !important;position:relative;z-index:2;margin:0 !important}
+.hero h1{font-family:'Playfair Display',Georgia,serif !important;font-size:62px !important;line-height:1.05 !important;margin:0 0 18px !important;color:#F5F1E6 !important;font-weight:500 !important;letter-spacing:-0.01em !important;text-transform:none !important}
+.hero h2{font-family:'Playfair Display',Georgia,serif !important;font-size:22px !important;color:rgba(245,241,230,0.85) !important;font-weight:400 !important;margin:0 0 38px !important;font-style:italic !important;line-height:1.4 !important;text-transform:none !important;letter-spacing:0 !important}
+.hero .btn-book{display:inline-block !important;padding:18px 44px !important;background:#B8943C !important;color:#0a0a3c !important;font-size:12px !important;letter-spacing:0.32em !important;font-weight:700 !important;border-radius:0 !important;border:1px solid #B8943C !important;text-decoration:none !important;text-transform:uppercase !important;transition:all .3s ease}
+.hero .btn-book:hover{background:transparent !important;color:#B8943C !important}
+@media (max-width:720px){
+  .hero{min-height:480px !important;padding:60px 20px !important}
+  .hero h1{font-size:38px !important}
+  .hero h2{font-size:17px !important;margin-bottom:30px !important}
+  .hero .btn-book{padding:15px 32px !important;font-size:11px !important}
+}
+</style> 
   </head>
 <body>
     <!-- Top contact bar -->
@@ -227,9 +279,10 @@
   <!-- Hero section with background image -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Boat Rental in Ibiza</h1>
-    <h2>Just enjoy the trip of your life</h2>
-    <a href="#boats" class="btn-book">Our Fleet</a>
+    <span class="pe">BOAT RENTAL IBIZA</span>
+    <h1>Just Enjoy Ibiza,<br>by boat.</h1>
+    <h2>Most clients book again. Some become friends.</h2>
+    <a href="#contact" class="btn-book">RENT YOUR BOAT</a>
   </div>
 </section>
 
