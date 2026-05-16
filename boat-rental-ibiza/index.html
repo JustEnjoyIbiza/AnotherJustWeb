@@ -115,14 +115,44 @@
     .page-intro-inner{font-size:16px}
   }
 
-  /* Boat detail modal — opens on boat card click */
-  #boats-preview .boat-card{cursor:pointer}
-  /* Hide any homepage hover-overlay artifacts on this page's boat cards */
-  #boats-preview .boat-card .boat-overlay,
-  #boats-preview .boat-card .availability-button,
-  #boats-preview .boat-card .date-input,
-  #boats-preview .boat-card input[type="date"],
-  #boats-preview .boat-card .close-card{display:none !important}
+  /* Isolated rental boat cards — fully styled here, do NOT use .boat-card class
+     to avoid inheriting homepage hover/click behavior from main.css and main.js. */
+  .rental-boats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin:0 0 40px}
+  .rental-card{position:relative;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee;cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+  .rental-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
+  .rental-card-img{position:relative;width:100%;height:210px;overflow:hidden;background:#0a0a3c}
+  .rental-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+  .rental-card:hover .rental-card-img img{transform:scale(1.06)}
+  .rental-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,0.7) 100%);pointer-events:none}
+  .rental-card-name{position:absolute;bottom:14px;left:18px;right:18px;color:#fff;font-size:21px;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,0.55);z-index:1;line-height:1.2;pointer-events:none}
+  .rental-card-info{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;gap:12px}
+  .rental-card-specs{display:flex;gap:14px;color:#666;font-size:14px;flex-wrap:wrap}
+  .rental-card-specs span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .rental-card-specs i{color:#0082ca}
+  .rental-card-price{background:#0a0a3c;color:#fff;padding:9px 16px;border-radius:6px;font-size:13px;font-weight:600;white-space:nowrap;letter-spacing:0.02em}
+  /* Featured rental card */
+  .rental-card.featured{grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr}
+  .rental-card.featured .rental-card-img{height:100%;min-height:340px}
+  .rental-card.featured .rental-card-body{padding:30px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+  .rental-card-badge{position:absolute;top:14px;left:14px;background:#B8943C;color:#fff;font-size:11px;letter-spacing:0.16em;font-weight:600;padding:6px 12px;border-radius:3px;z-index:2}
+  .rental-card-featured-title{font-size:26px;color:#0a0a3c;font-weight:700;margin:0 0 8px}
+  .rental-card-featured-desc{font-size:14.5px;color:#555;line-height:1.6;margin-bottom:18px}
+  .rental-card-featured-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+  .rental-card-featured-spec{text-align:center;padding:10px 6px;background:#f6f6f1;border-radius:6px}
+  .rental-card-featured-spec i{color:#0082ca;font-size:16px;display:block;margin-bottom:4px}
+  .rental-card-featured-spec strong{display:block;font-size:15px;color:#0a0a3c;font-weight:700}
+  .rental-card-featured-spec span{font-size:10px;color:#888;letter-spacing:0.06em;text-transform:uppercase}
+  .rental-card-featured-cta{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .rental-card-featured-price{display:flex;flex-direction:column}
+  .rental-card-featured-price small{font-size:11px;color:#888;letter-spacing:0.08em;text-transform:uppercase}
+  .rental-card-featured-price strong{font-size:20px;color:#0a0a3c;font-weight:700}
+  .rental-card-featured-button{background:#0a0a3c;color:#fff;padding:12px 22px;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.04em}
+  @media (max-width:720px){
+    .rental-card.featured{grid-column:span 1;grid-template-columns:1fr}
+    .rental-card.featured .rental-card-img{min-height:220px}
+  }
+
+  /* Boat detail modal — opens on rental card click */
 
   .jei-boat-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:20px;animation:jeiFade .3s ease}
   .jei-boat-modal.active{display:flex}
@@ -291,164 +321,159 @@
   </div>
 </section>
 
-<section class="boats-section" id="boats-preview">
+<section id="boats-preview" class="rental-section" style="padding:60px 20px;background:#fff">
   <div class="container">
-    <div class="boats-header">
-      <div class="header-left">
-        <h2 class="section-title">Boats<br>for every<br>occasion</h2>
-      </div>
-      <div class="header-right">
-        <div class="trip-duration">
-          <h2 class="trip-number">8h</h2>
-          <p class="trip-label">trips</p>
-          <div class="underline"></div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-bottom:40px">
+      <h2 class="section-title" style="margin-bottom:8px">Boats for every occasion</h2>
+      <p style="color:#666;font-size:16px">Click any boat for full details &middot; <strong>8-hour standard charter</strong></p>
     </div>
 
-    <div class="boats-grid">
-      <div class="boat-card jei-boat-trigger"
+    <div class="rental-boats-grid">
+
+      <div class="rental-card"
            data-name="Key Largo 27"
            data-image="/assets/img/boats/Photo_6554113_DJI_513_jpg_9666772_0_2022522154512_photo_original.jpg.jpg"
            data-price="From 822&euro;/day"
            data-capacity="7"
            data-length="8.05m"
            data-desc="A versatile open boat with plenty of space for the family. Easy to swim from, perfect for hidden coves and a day around the south coast of Ibiza.">
-        <div class="boat-image">
+        <div class="rental-card-img">
           <img src="/assets/img/boats/Photo_6554113_DJI_513_jpg_9666772_0_2022522154512_photo_original.jpg.jpg" alt="Key Largo 27 boat rental Ibiza">
-          <div class="boat-name">Key Largo 27</div>
+          <div class="rental-card-name">Key Largo 27</div>
         </div>
-        <div class="boat-details">
-          <div class="boat-info">
-            <div class="capacity"><i class="fas fa-user"></i> 7 crew</div>
-            <div class="size"><i class="fas fa-ruler-horizontal"></i> 8.05m</div>
+        <div class="rental-card-info">
+          <div class="rental-card-specs">
+            <span><i class="fas fa-user"></i> 7</span>
+            <span><i class="fas fa-ruler-horizontal"></i> 8.05m</span>
           </div>
-          <div class="boat-price"><span class="price-link">From 822&euro;/day</span></div>
+          <div class="rental-card-price">From 822&euro;</div>
         </div>
       </div>
 
-      <div class="boat-card jei-boat-trigger"
+      <div class="rental-card"
            data-name="Quicksilver 875"
            data-image="/assets/img/boats/875_sd_1g.jpg"
            data-price="From 762&euro;/day"
            data-capacity="11"
            data-length="9m"
            data-desc="A solid family boat for up to 11 people. Comfortable sundeck, easy boarding, ideal for a relaxed day around Cala Bassa or a calm crossing to Formentera.">
-        <div class="boat-image">
+        <div class="rental-card-img">
           <img src="/assets/img/boats/875_sd_1g.jpg" alt="Quicksilver 875 rental Ibiza">
-          <div class="boat-name">Quicksilver 875</div>
+          <div class="rental-card-name">Quicksilver 875</div>
         </div>
-        <div class="boat-details">
-          <div class="boat-info">
-            <div class="capacity"><i class="fas fa-user"></i> 11</div>
-            <div class="size"><i class="fas fa-ruler-horizontal"></i> 9m</div>
+        <div class="rental-card-info">
+          <div class="rental-card-specs">
+            <span><i class="fas fa-user"></i> 11</span>
+            <span><i class="fas fa-ruler-horizontal"></i> 9m</span>
           </div>
-          <div class="boat-price"><span class="price-link">From 762&euro;/day</span></div>
+          <div class="rental-card-price">From 762&euro;</div>
         </div>
       </div>
 
-      <div class="boat-card featured-boat jei-boat-trigger"
+      <div class="rental-card featured"
            data-name="DeAntonio 34"
            data-image="/assets/img/boats/D34.jpg"
            data-price="From 1425&euro;/day"
            data-capacity="11"
            data-length="10m"
            data-desc="The signature open yacht. Sleek modern design, 35 knot top speed, sundeck with full beanbag setup. Premium choice for Formentera day trips and Es Vedra sunset cruises.">
-        <div class="featured-badge">Premium Selection</div>
-        <div class="boat-image">
+        <div class="rental-card-img">
+          <span class="rental-card-badge">PREMIUM SELECTION</span>
           <img src="/assets/img/boats/D34.jpg" alt="DeAntonio 34 rental Ibiza">
+          <div class="rental-card-name">DeAntonio 34</div>
         </div>
-        <div class="featured-content">
+        <div class="rental-card-body">
           <div>
-            <h2 class="featured-title">DeAntonio 34</h2>
-            <p class="featured-description">Sleek, modern design. Perfect for day trips to Formentera and Es Vedra.</p>
-            <div class="featured-specs">
-              <div class="spec-item">
-                <div class="spec-icon"><i class="fas fa-user"></i></div>
-                <div class="spec-value">11</div>
-                <div class="spec-label">Capacity</div>
+            <h3 class="rental-card-featured-title">DeAntonio 34</h3>
+            <p class="rental-card-featured-desc">Sleek, modern open yacht. Perfect for Formentera day trips and Es Vedra sunset cruises.</p>
+            <div class="rental-card-featured-specs">
+              <div class="rental-card-featured-spec">
+                <i class="fas fa-user"></i>
+                <strong>11</strong>
+                <span>Capacity</span>
               </div>
-              <div class="spec-item">
-                <div class="spec-icon"><i class="fas fa-ruler-horizontal"></i></div>
-                <div class="spec-value">10m</div>
-                <div class="spec-label">Length</div>
+              <div class="rental-card-featured-spec">
+                <i class="fas fa-ruler-horizontal"></i>
+                <strong>10m</strong>
+                <span>Length</span>
               </div>
-              <div class="spec-item">
-                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
-                <div class="spec-value">35</div>
-                <div class="spec-label">Speed</div>
+              <div class="rental-card-featured-spec">
+                <i class="fas fa-tachometer-alt"></i>
+                <strong>35</strong>
+                <span>Knots</span>
               </div>
             </div>
           </div>
-          <div class="featured-price-container">
-            <div class="featured-price">
-              <div class="price-label">Starting from</div>
-              <div class="price-value">1425&euro;/day</div>
+          <div class="rental-card-featured-cta">
+            <div class="rental-card-featured-price">
+              <small>Starting from</small>
+              <strong>1425&euro;/day</strong>
             </div>
-            <a href="#contact" class="book-button">Book Now</a>
+            <span class="rental-card-featured-button">View Details</span>
           </div>
         </div>
       </div>
 
-      <div class="boat-card jei-boat-trigger"
+      <div class="rental-card"
            data-name="De Antonio 36"
            data-image="/assets/img/boats/DeAntonio-36.jpg"
            data-price="From 1385&euro;/day"
            data-capacity="12"
            data-length="11m"
            data-desc="The bigger sibling of the D34. Same iconic open design, more space on deck, more lounging room. Ideal for a group of friends or a small celebration on the water.">
-        <div class="boat-image">
+        <div class="rental-card-img">
           <img src="/assets/img/boats/DeAntonio-36.jpg" alt="De Antonio 36 rental Ibiza">
-          <div class="boat-name">De Antonio 36</div>
+          <div class="rental-card-name">De Antonio 36</div>
         </div>
-        <div class="boat-details">
-          <div class="boat-info">
-            <div class="capacity"><i class="fas fa-user"></i> 12</div>
-            <div class="size"><i class="fas fa-ruler-horizontal"></i> 11m</div>
+        <div class="rental-card-info">
+          <div class="rental-card-specs">
+            <span><i class="fas fa-user"></i> 12</span>
+            <span><i class="fas fa-ruler-horizontal"></i> 11m</span>
           </div>
-          <div class="boat-price"><span class="price-link">From 1385&euro;/day</span></div>
+          <div class="rental-card-price">From 1385&euro;</div>
         </div>
       </div>
 
-      <div class="boat-card jei-boat-trigger"
+      <div class="rental-card"
            data-name="Pardo 50"
            data-image="/assets/img/boats/2023-pardo-yachts-43-power-8997641-20240712134905145-1_XLARGE.jpg"
            data-price="From 3450&euro;/day"
            data-capacity="12"
            data-length="18m"
            data-desc="An 18-meter Italian yacht with full sundeck, dining for 12, and a quiet, refined ride. The kind of boat you charter for an anniversary, a proposal, or a milestone birthday at sea.">
-        <div class="boat-image">
+        <div class="rental-card-img">
           <img src="/assets/img/boats/2023-pardo-yachts-43-power-8997641-20240712134905145-1_XLARGE.jpg" alt="Pardo 50 yacht charter Ibiza">
-          <div class="boat-name">Pardo 50</div>
+          <div class="rental-card-name">Pardo 50</div>
         </div>
-        <div class="boat-details">
-          <div class="boat-info">
-            <div class="capacity"><i class="fas fa-user"></i> 12</div>
-            <div class="size"><i class="fas fa-ruler-horizontal"></i> 18m</div>
+        <div class="rental-card-info">
+          <div class="rental-card-specs">
+            <span><i class="fas fa-user"></i> 12</span>
+            <span><i class="fas fa-ruler-horizontal"></i> 18m</span>
           </div>
-          <div class="boat-price"><span class="price-link">From 3450&euro;/day</span></div>
+          <div class="rental-card-price">From 3450&euro;</div>
         </div>
       </div>
 
-      <div class="boat-card jei-boat-trigger"
+      <div class="rental-card"
            data-name="Sunseeker Predator 62"
            data-image="/assets/img/boats/DJI_0926.jpg"
            data-price="From 3490&euro;/day"
            data-capacity="12"
            data-length="18m"
            data-desc="A British sport-cruiser icon. Predator means speed and presence on the water. Full air-conditioned interior, exterior dining for 12, and a finish that turns heads in any marina.">
-        <div class="boat-image">
+        <div class="rental-card-img">
           <img src="/assets/img/boats/DJI_0926.jpg" alt="Sunseeker Predator 62 charter Ibiza">
-          <div class="boat-name">Sunseeker Predator 62</div>
+          <div class="rental-card-name">Sunseeker Predator 62</div>
         </div>
-        <div class="boat-details">
-          <div class="boat-info">
-            <div class="capacity"><i class="fas fa-user"></i> 12</div>
-            <div class="size"><i class="fas fa-ruler-horizontal"></i> 18m</div>
+        <div class="rental-card-info">
+          <div class="rental-card-specs">
+            <span><i class="fas fa-user"></i> 12</span>
+            <span><i class="fas fa-ruler-horizontal"></i> 18m</span>
           </div>
-          <div class="boat-price"><span class="price-link">From 3490&euro;/day</span></div>
+          <div class="rental-card-price">From 3490&euro;</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -808,10 +833,12 @@ function closeJeiBoatModal(){
 
 document.addEventListener('DOMContentLoaded', function(){
   // Wire boat card clicks to modal
-  document.querySelectorAll('.jei-boat-trigger').forEach(function(card){
+  document.querySelectorAll('.rental-card').forEach(function(card){
     card.addEventListener('click', function(e){
       // Don't intercept clicks that are already on a link/button inside
       if(e.target.closest('a, button')) return;
+      e.preventDefault();
+      e.stopPropagation();
       openJeiBoatModal(card);
     });
   });
