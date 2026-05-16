@@ -114,6 +114,43 @@
     .page-intro,.info-grid-section,.routes-section,.steps-section,.page-cta{padding:60px 18px}
     .page-intro-inner{font-size:16px}
   }
+
+  /* Boat detail modal — opens on boat card click */
+  #boats-preview .boat-card{cursor:pointer}
+  /* Hide any homepage hover-overlay artifacts on this page's boat cards */
+  #boats-preview .boat-card .boat-overlay,
+  #boats-preview .boat-card .availability-button,
+  #boats-preview .boat-card .date-input,
+  #boats-preview .boat-card input[type="date"],
+  #boats-preview .boat-card .close-card{display:none !important}
+
+  .jei-boat-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:20px;animation:jeiFade .3s ease}
+  .jei-boat-modal.active{display:flex}
+  .jei-boat-modal-content{background:#fff;max-width:540px;width:100%;border-radius:14px;overflow:hidden;position:relative;animation:jeiSlide .35s ease;max-height:92vh;overflow-y:auto}
+  .jei-boat-modal-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.95);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;font-size:22px;color:#0a0a3c;line-height:1;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.2)}
+  .jei-boat-modal-close:hover{background:#fff}
+  .jei-boat-modal-image{width:100%;height:300px;object-fit:cover;display:block;background:#0a0a3c}
+  .jei-boat-modal-body{padding:30px 32px 32px}
+  .jei-boat-modal-name{font-size:28px;color:#0a0a3c;margin:0 0 8px;font-weight:700;line-height:1.2}
+  .jei-boat-modal-price{font-size:17px;color:#0082ca;font-weight:600;margin-bottom:22px}
+  .jei-boat-modal-specs{display:flex;gap:14px;padding:18px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;margin-bottom:22px}
+  .jei-boat-modal-spec{flex:1;text-align:center}
+  .jei-boat-modal-spec i{color:#0082ca;font-size:18px;display:block;margin-bottom:6px}
+  .jei-boat-modal-spec strong{display:block;font-size:17px;color:#0a0a3c;font-weight:700;margin-bottom:2px}
+  .jei-boat-modal-spec span{font-size:11px;color:#888;letter-spacing:0.08em;text-transform:uppercase}
+  .jei-boat-modal-desc{color:#555;font-size:15px;line-height:1.7;margin-bottom:24px}
+  .jei-boat-modal-actions{display:flex;flex-direction:column;gap:10px}
+  .jei-boat-modal-cta{display:block;width:100%;padding:16px;background:#0a0a3c;color:#fff;text-align:center;font-size:13px;letter-spacing:0.18em;font-weight:700;border-radius:6px;text-decoration:none;transition:background .2s,transform .15s;border:none;cursor:pointer}
+  .jei-boat-modal-cta:hover{background:#0082ca;transform:translateY(-1px)}
+  .jei-boat-modal-whatsapp{display:block;width:100%;padding:14px;background:#25D366;color:#fff;text-align:center;font-size:13px;letter-spacing:0.12em;font-weight:600;border-radius:6px;text-decoration:none;transition:background .2s}
+  .jei-boat-modal-whatsapp:hover{background:#1faa54}
+  @keyframes jeiFade{from{opacity:0}to{opacity:1}}
+  @keyframes jeiSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @media (max-width:520px){
+    .jei-boat-modal-image{height:220px}
+    .jei-boat-modal-body{padding:24px 22px}
+    .jei-boat-modal-name{font-size:24px}
+  }
   </style>
 </head>
 <body>
@@ -270,7 +307,13 @@
     </div>
 
     <div class="boats-grid">
-      <div class="boat-card" data-size="8.05m">
+      <div class="boat-card jei-boat-trigger"
+           data-name="Key Largo 27"
+           data-image="/assets/img/boats/Photo_6554113_DJI_513_jpg_9666772_0_2022522154512_photo_original.jpg.jpg"
+           data-price="From 822&euro;/day"
+           data-capacity="7"
+           data-length="8.05m"
+           data-desc="A versatile open boat with plenty of space for the family. Easy to swim from, perfect for hidden coves and a day around the south coast of Ibiza.">
         <div class="boat-image">
           <img src="/assets/img/boats/Photo_6554113_DJI_513_jpg_9666772_0_2022522154512_photo_original.jpg.jpg" alt="Key Largo 27 boat rental Ibiza">
           <div class="boat-name">Key Largo 27</div>
@@ -280,11 +323,17 @@
             <div class="capacity"><i class="fas fa-user"></i> 7 crew</div>
             <div class="size"><i class="fas fa-ruler-horizontal"></i> 8.05m</div>
           </div>
-          <div class="boat-price"><a href="/#contact" class="price-link">From 822&euro;/day</a></div>
+          <div class="boat-price"><span class="price-link">From 822&euro;/day</span></div>
         </div>
       </div>
 
-      <div class="boat-card" data-size="9m">
+      <div class="boat-card jei-boat-trigger"
+           data-name="Quicksilver 875"
+           data-image="/assets/img/boats/875_sd_1g.jpg"
+           data-price="From 762&euro;/day"
+           data-capacity="11"
+           data-length="9m"
+           data-desc="A solid family boat for up to 11 people. Comfortable sundeck, easy boarding, ideal for a relaxed day around Cala Bassa or a calm crossing to Formentera.">
         <div class="boat-image">
           <img src="/assets/img/boats/875_sd_1g.jpg" alt="Quicksilver 875 rental Ibiza">
           <div class="boat-name">Quicksilver 875</div>
@@ -294,11 +343,17 @@
             <div class="capacity"><i class="fas fa-user"></i> 11</div>
             <div class="size"><i class="fas fa-ruler-horizontal"></i> 9m</div>
           </div>
-          <div class="boat-price"><a href="/#contact" class="price-link">From 762&euro;/day</a></div>
+          <div class="boat-price"><span class="price-link">From 762&euro;/day</span></div>
         </div>
       </div>
 
-      <div class="boat-card featured-boat" data-size="10m">
+      <div class="boat-card featured-boat jei-boat-trigger"
+           data-name="DeAntonio 34"
+           data-image="/assets/img/boats/D34.jpg"
+           data-price="From 1425&euro;/day"
+           data-capacity="11"
+           data-length="10m"
+           data-desc="The signature open yacht. Sleek modern design, 35 knot top speed, sundeck with full beanbag setup. Premium choice for Formentera day trips and Es Vedra sunset cruises.">
         <div class="featured-badge">Premium Selection</div>
         <div class="boat-image">
           <img src="/assets/img/boats/D34.jpg" alt="DeAntonio 34 rental Ibiza">
@@ -335,7 +390,13 @@
         </div>
       </div>
 
-      <div class="boat-card" data-size="11m">
+      <div class="boat-card jei-boat-trigger"
+           data-name="De Antonio 36"
+           data-image="/assets/img/boats/DeAntonio-36.jpg"
+           data-price="From 1385&euro;/day"
+           data-capacity="12"
+           data-length="11m"
+           data-desc="The bigger sibling of the D34. Same iconic open design, more space on deck, more lounging room. Ideal for a group of friends or a small celebration on the water.">
         <div class="boat-image">
           <img src="/assets/img/boats/DeAntonio-36.jpg" alt="De Antonio 36 rental Ibiza">
           <div class="boat-name">De Antonio 36</div>
@@ -345,11 +406,17 @@
             <div class="capacity"><i class="fas fa-user"></i> 12</div>
             <div class="size"><i class="fas fa-ruler-horizontal"></i> 11m</div>
           </div>
-          <div class="boat-price"><a href="/#contact" class="price-link">From 1385&euro;/day</a></div>
+          <div class="boat-price"><span class="price-link">From 1385&euro;/day</span></div>
         </div>
       </div>
 
-      <div class="boat-card" data-size="18m">
+      <div class="boat-card jei-boat-trigger"
+           data-name="Pardo 50"
+           data-image="/assets/img/boats/2023-pardo-yachts-43-power-8997641-20240712134905145-1_XLARGE.jpg"
+           data-price="From 3450&euro;/day"
+           data-capacity="12"
+           data-length="18m"
+           data-desc="An 18-meter Italian yacht with full sundeck, dining for 12, and a quiet, refined ride. The kind of boat you charter for an anniversary, a proposal, or a milestone birthday at sea.">
         <div class="boat-image">
           <img src="/assets/img/boats/2023-pardo-yachts-43-power-8997641-20240712134905145-1_XLARGE.jpg" alt="Pardo 50 yacht charter Ibiza">
           <div class="boat-name">Pardo 50</div>
@@ -359,11 +426,17 @@
             <div class="capacity"><i class="fas fa-user"></i> 12</div>
             <div class="size"><i class="fas fa-ruler-horizontal"></i> 18m</div>
           </div>
-          <div class="boat-price"><a href="/#contact" class="price-link">From 3450&euro;/day</a></div>
+          <div class="boat-price"><span class="price-link">From 3450&euro;/day</span></div>
         </div>
       </div>
 
-      <div class="boat-card" data-size="18m">
+      <div class="boat-card jei-boat-trigger"
+           data-name="Sunseeker Predator 62"
+           data-image="/assets/img/boats/DJI_0926.jpg"
+           data-price="From 3490&euro;/day"
+           data-capacity="12"
+           data-length="18m"
+           data-desc="A British sport-cruiser icon. Predator means speed and presence on the water. Full air-conditioned interior, exterior dining for 12, and a finish that turns heads in any marina.">
         <div class="boat-image">
           <img src="/assets/img/boats/DJI_0926.jpg" alt="Sunseeker Predator 62 charter Ibiza">
           <div class="boat-name">Sunseeker Predator 62</div>
@@ -373,7 +446,7 @@
             <div class="capacity"><i class="fas fa-user"></i> 12</div>
             <div class="size"><i class="fas fa-ruler-horizontal"></i> 18m</div>
           </div>
-          <div class="boat-price"><a href="/#contact" class="price-link">From 3490&euro;/day</a></div>
+          <div class="boat-price"><span class="price-link">From 3490&euro;/day</span></div>
         </div>
       </div>
     </div>
@@ -651,6 +724,41 @@
   </div>
 </section>
 
+<div class="jei-boat-modal" id="jeiBoatModal" role="dialog" aria-modal="true" aria-labelledby="jeiBoatModalName">
+  <div class="jei-boat-modal-content">
+    <button class="jei-boat-modal-close" type="button" onclick="closeJeiBoatModal()" aria-label="Close">&times;</button>
+    <img class="jei-boat-modal-image" id="jeiBoatModalImage" src="" alt="">
+    <div class="jei-boat-modal-body">
+      <h3 class="jei-boat-modal-name" id="jeiBoatModalName"></h3>
+      <div class="jei-boat-modal-price" id="jeiBoatModalPrice"></div>
+      <div class="jei-boat-modal-specs">
+        <div class="jei-boat-modal-spec">
+          <i class="fas fa-user"></i>
+          <strong id="jeiBoatModalCapacity"></strong>
+          <span>Capacity</span>
+        </div>
+        <div class="jei-boat-modal-spec">
+          <i class="fas fa-ruler-horizontal"></i>
+          <strong id="jeiBoatModalLength"></strong>
+          <span>Length</span>
+        </div>
+        <div class="jei-boat-modal-spec">
+          <i class="fas fa-clock"></i>
+          <strong>8h day</strong>
+          <span>Standard charter</span>
+        </div>
+      </div>
+      <p class="jei-boat-modal-desc" id="jeiBoatModalDesc"></p>
+      <div class="jei-boat-modal-actions">
+        <a href="#contact" class="jei-boat-modal-cta" id="jeiBoatModalCta" onclick="closeJeiBoatModal()">BOOK THIS BOAT</a>
+        <a href="https://wa.me/34642453952" class="jei-boat-modal-whatsapp" target="_blank" rel="noopener" id="jeiBoatModalWhatsApp">
+          <i class="fab fa-whatsapp"></i> WHATSAPP US ABOUT THIS BOAT
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="footer-links">
     <a href="/" class="footer-link">Home</a>
@@ -668,7 +776,58 @@ function toggleFaq(element){
   if(!isActive) faqItem.classList.add('active');
 }
 
+// Boat detail modal
+function openJeiBoatModal(card){
+  const name = card.dataset.name || '';
+  const image = card.dataset.image || '';
+  const price = card.dataset.price || '';
+  const capacity = card.dataset.capacity || '';
+  const length = card.dataset.length || '';
+  const desc = card.dataset.desc || '';
+
+  document.getElementById('jeiBoatModalName').textContent = name;
+  document.getElementById('jeiBoatModalImage').src = image;
+  document.getElementById('jeiBoatModalImage').alt = name;
+  document.getElementById('jeiBoatModalPrice').innerHTML = price;
+  document.getElementById('jeiBoatModalCapacity').textContent = capacity;
+  document.getElementById('jeiBoatModalLength').textContent = length;
+  document.getElementById('jeiBoatModalDesc').textContent = desc;
+
+  // Pre-fill WhatsApp message with boat name
+  const wa = document.getElementById('jeiBoatModalWhatsApp');
+  const msg = encodeURIComponent("Hi! I'd like to ask about renting the " + name + " in Ibiza.");
+  wa.href = "https://wa.me/34642453952?text=" + msg;
+
+  document.getElementById('jeiBoatModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeJeiBoatModal(){
+  document.getElementById('jeiBoatModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 document.addEventListener('DOMContentLoaded', function(){
+  // Wire boat card clicks to modal
+  document.querySelectorAll('.jei-boat-trigger').forEach(function(card){
+    card.addEventListener('click', function(e){
+      // Don't intercept clicks that are already on a link/button inside
+      if(e.target.closest('a, button')) return;
+      openJeiBoatModal(card);
+    });
+  });
+
+  // Close modal: click outside content
+  const modal = document.getElementById('jeiBoatModal');
+  if(modal){
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeJeiBoatModal();
+    });
+  }
+  // Close on Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeJeiBoatModal();
+  });
+
   // Hamburger
   const hamburger = document.querySelector('.hamburger-icon');
   const nav = document.querySelector('.main-nav');
