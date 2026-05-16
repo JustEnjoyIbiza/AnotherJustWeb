@@ -66,12 +66,219 @@
   </script>
 
   <style>
-  /* Page-specific styles: extend the existing site CSS with a few helpers used only by this page. */
-  .page-intro{background:#fff;padding:80px 20px}
-  .page-intro-inner{max-width:780px;margin:0 auto;font-size:18px;line-height:1.85;color:#333}
+  /* ============================================================
+     PREMIUM PAGE DESIGN — navy + gold + serif
+     Override the homepage's stylesheet for sections on THIS page only.
+     ============================================================ */
+
+  /* Reusable eyebrow with gold side-rules */
+  .pe{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.4em;color:#B8943C;font-weight:600;margin-bottom:18px;text-transform:uppercase;position:relative;padding:0 28px}
+  .pe::before,.pe::after{content:"";position:absolute;top:50%;width:20px;height:1px;background:#B8943C}
+  .pe::before{left:0}
+  .pe::after{right:0}
+
+  /* HERO — premium */
+  .hero{position:relative;min-height:620px !important;background:linear-gradient(180deg,rgba(10,10,60,0.5) 0%,rgba(10,10,60,0.85) 100%),url('/assets/img/boats/DeAntonioYachts_D50_21-scaled.jpg') center/cover !important;color:#F5F1E6 !important;display:flex !important;align-items:center;justify-content:center;padding:90px 24px !important;text-align:center}
+  .hero-content{max-width:880px;position:relative;z-index:2}
+  .hero h1{font-family:'Playfair Display',Georgia,serif !important;font-size:62px !important;line-height:1.05 !important;margin:0 0 18px !important;color:#F5F1E6 !important;font-weight:500 !important;letter-spacing:-0.01em}
+  .hero h2{font-family:'Playfair Display',Georgia,serif !important;font-size:22px !important;color:rgba(245,241,230,0.85) !important;font-weight:400 !important;margin:0 0 38px !important;font-style:italic;line-height:1.4 !important;text-transform:none}
+  .hero .btn-book{display:inline-block !important;padding:18px 44px !important;background:#B8943C !important;color:#0a0a3c !important;font-size:12px !important;letter-spacing:0.32em !important;font-weight:700 !important;border-radius:0 !important;border:1px solid #B8943C !important;text-decoration:none;transition:all .3s ease}
+  .hero .btn-book:hover{background:transparent !important;color:#B8943C !important}
+  @media (max-width:720px){
+    .hero{min-height:480px !important;padding:60px 20px !important}
+    .hero h1{font-size:38px !important}
+    .hero h2{font-size:17px !important;margin-bottom:30px !important}
+    .hero .btn-book{padding:15px 32px !important;font-size:11px !important}
+  }
+
+  /* Brand logos — refined */
+  .brand-logos{background:#F5F1E6 !important;padding:50px 20px !important;border-bottom:1px solid #e8e6de}
+  .brand-logos .logo-grid{display:flex !important;justify-content:center;align-items:center;flex-wrap:wrap;gap:50px;max-width:1180px;margin:0 auto;opacity:0.55}
+  .brand-logos .logo-grid img{max-height:36px;width:auto;filter:grayscale(100%)}
+
+  /* PAGE INTRO — premium with drop cap */
+  .page-intro{background:#F5F1E6 !important;padding:100px 20px !important}
+  .page-intro-inner{max-width:740px !important;margin:0 auto !important;text-align:center;color:#3a3a35 !important;font-size:17px !important;line-height:1.85 !important}
+  .page-intro-inner p{margin-bottom:22px;text-align:left}
+  .page-intro-inner p:first-of-type::first-letter{font-family:'Playfair Display',serif;font-size:64px;font-weight:500;float:left;line-height:0.95;margin:6px 12px 0 0;color:#B8943C}
+  .page-intro-inner strong{color:#0a0a3c}
+  .page-eyebrow{display:inline-block !important;font-family:'Inter',sans-serif;font-size:11px !important;letter-spacing:0.4em !important;color:#B8943C !important;font-weight:600 !important;margin-bottom:24px;text-transform:uppercase;position:relative;padding:0 28px}
+  .page-eyebrow::before,.page-eyebrow::after{content:"";position:absolute;top:50%;width:20px;height:1px;background:#B8943C}
+  .page-eyebrow::before{left:0}
+  .page-eyebrow::after{right:0}
+
+  /* ROUTES — premium image cards */
+  .routes-section{background:#fff !important;padding:100px 20px !important}
+  .routes-inner{max-width:1180px;margin:0 auto}
+  .routes-header{text-align:center;max-width:680px;margin:0 auto 60px}
+  .routes-inner h2{font-family:'Playfair Display',Georgia,serif !important;font-size:42px !important;line-height:1.15 !important;color:#0a0a3c !important;font-weight:500 !important;margin:0 0 18px !important;text-align:center;letter-spacing:-0.01em}
+  .routes-sub{text-align:center !important;color:#666 !important;font-size:17px !important;line-height:1.7 !important;margin:0 auto !important}
+  .routes-grid{display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:16px !important;margin-top:60px}
+  .route-card{position:relative;height:380px !important;overflow:hidden;cursor:pointer;color:#fff;border-radius:0 !important}
+  .route-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .route-card:hover img{transform:scale(1.06)}
+  .route-card::before{content:"" !important;position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(10,10,60,0.85) 100%) !important;z-index:1}
+  .route-card::after{content:"";position:absolute;inset:14px;border:1px solid rgba(184,148,60,0);transition:border-color .4s;z-index:2;pointer-events:none}
+  .route-card:hover::after{border-color:rgba(184,148,60,0.6)}
+  .route-card-content{position:absolute;bottom:24px;left:24px;right:24px;z-index:2}
+  .route-card-num{font-family:'Playfair Display',serif;font-size:11px;letter-spacing:0.32em;color:#B8943C;font-weight:500;margin-bottom:10px;display:block;text-transform:uppercase}
+  .route-card h3{font-family:'Playfair Display',serif !important;font-size:26px !important;color:#F5F1E6 !important;font-weight:500 !important;margin:0 0 8px !important;letter-spacing:0 !important}
+  .route-card p{font-size:13.5px !important;color:rgba(245,241,230,0.88) !important;line-height:1.55 !important;margin:0 !important}
+  @media (max-width:1000px){.routes-grid{grid-template-columns:repeat(2,1fr) !important}}
+  @media (max-width:600px){.routes-grid{grid-template-columns:1fr !important;gap:14px !important}.route-card{height:280px !important}}
+
+  /* BOATS PREVIEW — section header premium */
+  .rental-section{padding:100px 20px !important;background:#F5F1E6 !important}
+  .rental-section .container{max-width:1180px;margin:0 auto}
+  .rental-section .section-title{font-family:'Playfair Display',Georgia,serif !important;font-size:42px !important;line-height:1.15 !important;color:#0a0a3c !important;font-weight:500 !important;letter-spacing:-0.01em;margin:0 0 18px !important}
+
+  /* MORE BOATS premium */
+  .more-boats-section{text-align:center;background:#fff !important;padding:90px 20px !important;border-top:1px solid #e8e6de !important;border-bottom:1px solid #e8e6de !important;margin:0 !important}
+  .more-boats-count{font-family:'Playfair Display',serif !important;font-size:84px !important;color:#0a0a3c !important;font-weight:500 !important;letter-spacing:-0.02em !important;margin:0 0 12px !important;line-height:1}
+  .more-boats-count span{color:#B8943C !important;font-size:28px !important;margin-left:8px;letter-spacing:0.2em !important;text-transform:uppercase;font-weight:500 !important;vertical-align:middle;font-family:'Inter',sans-serif !important}
+  .more-boats-description{color:#666 !important;font-size:17px !important;margin:0 auto 30px !important;max-width:480px;line-height:1.7}
+  .more-boats-button{display:inline-block !important;padding:16px 42px !important;border:1px solid #0a0a3c !important;color:#0a0a3c !important;background:transparent !important;font-size:11px !important;letter-spacing:0.32em !important;font-weight:700 !important;text-decoration:none;transition:all .3s ease;text-transform:uppercase}
+  .more-boats-button:hover{background:#0a0a3c !important;color:#F5F1E6 !important}
+  .more-boats-section .section-divider{display:none !important}
+
+  /* WHY premium */
+  .why-section{background:#0a0a3c !important;color:#F5F1E6 !important;padding:100px 20px !important}
+  .why-section .container{max-width:1180px;margin:0 auto}
+  .why-section .section-divider{display:none !important}
+  .why-section .section-title{font-family:'Playfair Display',Georgia,serif !important;font-size:42px !important;line-height:1.15 !important;color:#F5F1E6 !important;font-weight:500 !important;text-align:center !important;margin:0 0 60px !important;letter-spacing:-0.01em}
+  .why-section .features-container{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:50px !important;max-width:1180px;margin:0 auto !important}
+  .why-section .feature{text-align:center}
+  .why-section .feature-image{height:260px !important;overflow:hidden;margin-bottom:30px !important;border-radius:0 !important;position:relative;width:100% !important}
+  .why-section .feature-image img{width:100% !important;height:100% !important;object-fit:cover !important;transition:transform .8s ease;display:block;border-radius:0 !important}
+  .why-section .feature:hover .feature-image img{transform:scale(1.05)}
+  .why-section .feature-image::after{content:"";position:absolute;inset:10px;border:1px solid rgba(184,148,60,0);transition:border-color .4s;pointer-events:none}
+  .why-section .feature:hover .feature-image::after{border-color:rgba(184,148,60,0.5)}
+  .why-section .feature-title{font-family:'Playfair Display',serif !important;font-size:24px !important;color:#F5F1E6 !important;font-weight:500 !important;margin:0 0 18px !important;letter-spacing:0 !important;position:relative;padding-bottom:18px}
+  .why-section .feature-title::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:36px;height:1px;background:#B8943C}
+  .why-section .feature-text{color:rgba(245,241,230,0.75) !important;font-size:15px !important;line-height:1.75 !important;margin:0 !important}
+  .why-section .feature-text strong{color:#F5F1E6 !important;font-weight:500 !important}
+  .why-section .cta-container{text-align:center;margin-top:60px}
+  .why-section .cta-button{display:inline-block !important;padding:16px 42px !important;background:#B8943C !important;color:#0a0a3c !important;font-size:11px !important;letter-spacing:0.32em !important;font-weight:700 !important;text-decoration:none;border:1px solid #B8943C !important;transition:all .3s;text-transform:uppercase;border-radius:0}
+  .why-section .cta-button:hover{background:transparent !important;color:#B8943C !important}
+  .why-section .special-title{position:relative}
+  @media (max-width:900px){.why-section .features-container{grid-template-columns:1fr !important;gap:50px !important}}
+
+  /* MEMORIES premium */
+  .memories-section{background:#F5F1E6 !important;padding:100px 20px !important;overflow:hidden;position:relative;display:grid !important;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;max-width:1280px;margin:0 auto}
+  .memories-section .photo-collage{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:10px !important;height:560px !important;width:100% !important;position:relative !important;inset:auto !important;float:none !important}
+  .memories-section .photo-collage .photo{width:100% !important;height:100% !important;position:relative !important;overflow:hidden;inset:auto !important;float:none !important;border-radius:0 !important}
+  .memories-section .photo-collage .photo img{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;transition:transform .5s}
+  .memories-section .photo-collage .photo:hover img{transform:scale(1.04)}
+  .memories-section .memories-content{position:relative !important;max-width:none !important;padding:0 !important;width:auto !important}
+  .memories-section .memories-content h2{font-family:'Playfair Display',Georgia,serif !important;font-size:46px !important;line-height:1.1 !important;color:#0a0a3c !important;font-weight:500 !important;margin:0 0 26px !important;letter-spacing:-0.01em !important;text-align:left !important}
+  .memories-section .memories-content h2 br{display:inline}
+  .memories-section .memories-content p{color:#3a3a35 !important;font-size:17px !important;line-height:1.8 !important;margin:0 0 32px !important;text-align:left !important}
+  .memories-section .memories-content p strong{color:#0a0a3c !important;font-weight:600 !important}
+  .memories-section .memories-content .cta-button{display:inline-block !important;padding:16px 42px !important;background:#B8943C !important;color:#0a0a3c !important;font-size:11px !important;letter-spacing:0.32em !important;font-weight:700 !important;text-decoration:none;border:1px solid #B8943C !important;transition:all .3s;text-transform:uppercase;border-radius:0}
+  .memories-section .memories-content .cta-button:hover{background:transparent !important;color:#B8943C !important}
+  .memories-section .whatsapp-button{position:fixed !important;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;overflow:hidden;z-index:200;box-shadow:0 4px 20px rgba(0,0,0,0.25)}
+  .memories-section .whatsapp-button img{width:100%;height:100%;display:block}
+  @media (max-width:900px){
+    .memories-section{grid-template-columns:1fr !important;gap:40px}
+    .memories-section .photo-collage{height:380px !important}
+  }
+
+  /* STEPS premium */
+  .steps-section{background:#0a0a3c !important;color:#F5F1E6 !important;padding:100px 20px !important}
+  .steps-inner{max-width:1180px;margin:0 auto}
+  .steps-inner h2{font-family:'Playfair Display',Georgia,serif !important;font-size:42px !important;line-height:1.15 !important;color:#F5F1E6 !important;font-weight:500 !important;margin:0 0 18px !important;text-align:center;letter-spacing:-0.01em}
+  .steps-sub{text-align:center;color:rgba(245,241,230,0.7) !important;font-size:17px !important;line-height:1.7 !important;max-width:640px;margin:0 auto !important}
+  .steps-grid{display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:40px !important;margin-top:70px}
+  .step-item{text-align:center}
+  .step-num{display:inline-block !important;width:auto !important;height:auto !important;background:transparent !important;border:none !important;font-family:'Playfair Display',Georgia,serif !important;font-size:50px !important;font-weight:500 !important;color:#B8943C !important;margin:0 !important;letter-spacing:-0.02em !important;line-height:1;position:relative;padding-bottom:22px}
+  .step-num::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:36px;height:1px;background:#B8943C}
+  .step-item h3{font-family:'Playfair Display',serif !important;font-size:22px !important;color:#F5F1E6 !important;font-weight:500 !important;margin:24px 0 14px !important;letter-spacing:0 !important}
+  .step-item p{color:rgba(245,241,230,0.7) !important;font-size:14.5px !important;line-height:1.7 !important;margin:0 !important}
+  @media (max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr) !important;gap:50px 30px}}
+  @media (max-width:520px){.steps-grid{grid-template-columns:1fr !important;gap:50px}}
+
+  /* TESTIMONIALS premium */
+  .testimonials-section{background:#F5F1E6 !important;padding:100px 20px !important}
+  .testimonials-section .container{max-width:1180px;margin:0 auto}
+  .testimonials-section .section-title{font-family:'Playfair Display',serif !important;font-size:42px !important;line-height:1.15 !important;color:#0a0a3c !important;font-weight:500 !important;margin:0 0 60px !important;text-align:center;letter-spacing:-0.01em}
+  .testimonials-container{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:30px !important}
+  .testimonial-card{background:#fff !important;padding:48px 40px !important;border:none !important;border-radius:0 !important;box-shadow:none !important;position:relative;overflow:hidden}
+  .testimonial-card::before{content:"\201C";position:absolute;top:6px;left:32px;font-family:'Playfair Display',serif;font-size:130px;color:#B8943C;line-height:1;opacity:0.18;font-weight:500;pointer-events:none}
+  .testimonial-content{position:relative;z-index:1}
+  .testimonial-content p{font-family:'Playfair Display',serif !important;font-style:italic !important;font-size:19px !important;line-height:1.55 !important;color:#0a0a3c !important;margin:0 0 26px !important;font-weight:500 !important;text-align:left !important}
+  .testimonial-content p strong{color:#B8943C !important;font-style:normal !important;font-weight:600 !important}
+  .testimonial-author{display:flex !important;align-items:center !important;gap:14px !important;padding-top:18px !important;border-top:1px solid #e8e6de !important;flex-direction:row !important}
+  .testimonial-author .author-info{order:2}
+  .testimonial-author .author-image{order:1;width:48px !important;height:48px !important;border-radius:50% !important;overflow:hidden;flex-shrink:0}
+  .testimonial-author .author-image img{width:100% !important;height:100% !important;object-fit:cover !important;display:block}
+  .testimonial-author .author-name{font-family:'Inter',sans-serif !important;font-size:11px !important;letter-spacing:0.22em !important;font-weight:600 !important;color:#0a0a3c !important;text-transform:uppercase}
+  @media (max-width:800px){.testimonials-container{grid-template-columns:1fr !important}}
+
+  /* FAQS premium */
+  .faqs-section{background:#fff !important;padding:100px 20px !important}
+  .faqs-section .container{max-width:1180px;margin:0 auto}
+  .faqs-container{display:grid !important;grid-template-columns:1.7fr 1fr !important;gap:60px !important;align-items:start !important}
+  .faqs-column .section-title{font-family:'Playfair Display',serif !important;font-size:36px !important;line-height:1.15 !important;color:#0a0a3c !important;font-weight:500 !important;margin:0 0 36px !important;letter-spacing:-0.01em;text-align:left !important}
+  .faq-list{}
+  .faq-item{border-bottom:1px solid #e8e6de !important;padding:0 !important;background:transparent !important}
+  .faq-item:first-child{border-top:1px solid #e8e6de}
+  .faq-question{padding:24px 0 !important;font-family:'Inter',sans-serif !important;font-size:13px !important;letter-spacing:0.16em !important;color:#0a0a3c !important;cursor:pointer !important;display:flex !important;justify-content:space-between !important;align-items:center !important;text-transform:uppercase !important;font-weight:600 !important;gap:24px !important;background:transparent !important;border:none !important}
+  .faq-question::before{content:none !important}
+  .faq-question .question-dot{display:none !important}
+  .faq-question .toggle-icon{position:relative !important;width:14px !important;height:14px !important;flex-shrink:0 !important;background:transparent !important;border:none !important;transform:none !important}
+  .faq-question .toggle-icon::before,.faq-question .toggle-icon::after{content:"" !important;position:absolute;background:#B8943C !important;transition:transform .3s !important}
+  .faq-question .toggle-icon::before{top:50% !important;left:0 !important;width:14px !important;height:1px !important;transform:translateY(-50%)}
+  .faq-question .toggle-icon::after{left:50% !important;top:0 !important;width:1px !important;height:14px !important;transform:translateX(-50%)}
+  .faq-item.active .faq-question .toggle-icon::after{transform:translateX(-50%) rotate(90deg)}
+  .faq-answer{max-height:0 !important;overflow:hidden !important;transition:max-height .4s ease,padding .3s ease !important;padding:0 !important}
+  .faq-item.active .faq-answer{max-height:800px !important;padding:0 0 24px !important}
+  .faq-answer p{font-family:'Inter',sans-serif !important;font-size:15px !important;line-height:1.8 !important;color:#3a3a35 !important;margin:0 0 12px !important}
+  .faq-answer p:last-child{margin-bottom:0 !important}
+  .faq-answer strong{color:#0a0a3c !important;font-weight:600 !important}
+  .contact-column{position:sticky;top:80px;background:#0a0a3c;color:#F5F1E6;padding:40px 32px}
+  .contact-column .more-questions{font-family:'Playfair Display',serif !important;font-size:32px !important;line-height:1.15 !important;color:#F5F1E6 !important;font-weight:500 !important;margin:0 0 24px !important;letter-spacing:-0.01em;text-align:left !important}
+  .contact-column .whatsapp-btn{display:inline-block !important;padding:14px 28px !important;background:#25D366 !important;color:#fff !important;font-size:11px !important;letter-spacing:0.28em !important;font-weight:700 !important;text-decoration:none;text-transform:uppercase;border-radius:0;transition:background .2s}
+  .contact-column .whatsapp-btn:hover{background:#1faa54 !important}
+  @media (max-width:800px){.faqs-container{grid-template-columns:1fr !important;gap:40px !important}.contact-column{position:static}}
+
+  /* CONTACT FORM premium */
+  .contact-section{background:#0a0a3c !important;color:#F5F1E6 !important;padding:100px 20px !important}
+  .contact-container{max-width:1180px;margin:0 auto !important;display:grid !important;grid-template-columns:1fr 1.2fr !important;gap:60px !important;align-items:start !important;flex-direction:row !important}
+  .contact-left{padding:0 !important}
+  .contact-left .logo-small{margin-bottom:24px}
+  .contact-left .text-logo-small{font-family:'Playfair Display',serif !important;font-size:22px !important;color:#B8943C !important;letter-spacing:0.08em !important;font-weight:500 !important;text-transform:uppercase}
+  .contact-heading{font-family:'Playfair Display',serif !important;font-size:42px !important;line-height:1.15 !important;color:#F5F1E6 !important;font-weight:500 !important;margin:0 0 30px !important;letter-spacing:-0.01em}
+  .contact-heading .heading-accent{color:#B8943C !important;font-style:italic !important;font-weight:500 !important}
+  .response-time{color:rgba(245,241,230,0.85) !important;font-size:17px !important;line-height:1.6 !important;margin:0 0 14px !important}
+  .response-time strong{color:#B8943C !important;font-weight:600 !important}
+  .contact-or{color:rgba(245,241,230,0.7) !important;font-size:15px !important;line-height:1.6 !important;margin:0 !important}
+  .contact-or strong{color:#F5F1E6 !important;font-weight:600 !important}
+  .contact-right{background:#F5F1E6 !important;padding:48px 40px !important;color:#0a0a3c !important;border-radius:0 !important;box-shadow:none !important}
+  .contact-form .form-group{margin-bottom:18px !important}
+  .contact-form label{display:block !important;font-family:'Inter',sans-serif !important;font-size:11px !important;letter-spacing:0.2em !important;font-weight:600 !important;color:#0a0a3c !important;margin-bottom:8px !important;text-transform:uppercase}
+  .contact-form input,.contact-form select{width:100% !important;padding:14px 16px !important;border:1px solid #d8d4c8 !important;background:#fff !important;font-family:'Inter',sans-serif !important;font-size:15px !important;color:#0a0a3c !important;border-radius:0 !important;transition:border-color .2s}
+  .contact-form input:focus,.contact-form select:focus{outline:none !important;border-color:#B8943C !important}
+  .contact-form .phone-input-wrapper{display:flex !important;gap:8px}
+  .contact-form .country-selector{position:relative;flex-shrink:0;width:120px}
+  .contact-form .country-selector select{padding:14px 30px 14px 50px !important;cursor:pointer;color:transparent !important;width:100% !important}
+  .contact-form .country-selector #country-code-display{position:absolute;left:16px;top:14px;color:#0a0a3c !important;font-size:15px !important;pointer-events:none;background:transparent;border:none}
+  .contact-form .submit-button{width:100% !important;padding:18px !important;background:#0a0a3c !important;color:#F5F1E6 !important;border:1px solid #0a0a3c !important;font-family:'Inter',sans-serif !important;font-size:12px !important;letter-spacing:0.32em !important;font-weight:700 !important;text-transform:uppercase;cursor:pointer;margin-top:12px;transition:all .3s !important;border-radius:0 !important}
+  .contact-form .submit-button:hover{background:#B8943C !important;border-color:#B8943C !important;color:#0a0a3c !important}
+  @media (max-width:900px){.contact-container{grid-template-columns:1fr !important;gap:40px}.contact-right{padding:32px 24px !important}}
+
+  /* RESTAURANTS section if shown — hide on this page */
+  .restaurant-section{display:none !important}
+
+  /* FOOTER premium */
+  .footer{background:#080828 !important;color:rgba(245,241,230,0.6) !important;padding:50px 20px !important;text-align:center !important}
+  .footer .footer-links{margin-bottom:18px !important;display:flex !important;justify-content:center !important;gap:32px !important;flex-wrap:wrap}
+  .footer .footer-link{color:rgba(245,241,230,0.7) !important;font-size:11px !important;letter-spacing:0.24em !important;text-transform:uppercase;text-decoration:none;font-weight:500;transition:color .2s}
+  .footer .footer-link:hover{color:#B8943C !important}
+  .footer .copyright{font-size:11px !important;color:rgba(245,241,230,0.4) !important;letter-spacing:0.06em !important}
+
+  /* Use a generic "page-intro" content style */
   .page-intro-inner p{margin-bottom:22px}
   .page-intro-inner strong{color:#0a0a3c}
-  .page-eyebrow{display:block;font-size:12px;letter-spacing:0.32em;color:#0082ca;font-weight:600;margin-bottom:16px;text-transform:uppercase}
 
   /* Premium "what's included" section */
   .premium-included{background:#0a0a3c;color:#F5F1E6;padding:100px 20px;position:relative;overflow:hidden}
@@ -240,8 +447,9 @@
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Boat Rental in Ibiza</h1>
-    <h2>Your day on the water, built around you</h2>
+    <span class="pe">BOAT RENTAL IBIZA</span>
+    <h1>Your day on the water,<br>built around you</h1>
+    <h2>From speedboats to luxury yachts &mdash; captained by someone who knows every cove</h2>
     <a href="#contact" class="btn-book">RENT YOUR BOAT</a>
   </div>
 </section>
@@ -261,10 +469,12 @@
 
 <section class="page-intro">
   <div class="page-intro-inner">
-    <span class="page-eyebrow">RENT A BOAT IN IBIZA &middot; FROM &euro;762/DAY</span>
+    <div style="text-align:center;margin-bottom:30px">
+      <span class="pe">FROM &euro;762/DAY</span>
+    </div>
     <p>Renting a boat in Ibiza is simply the best way to see the island. Half of what makes Ibiza famous &mdash; the turquoise water, the hidden coves, Es Vedra at sunset, the long white sand bars of Formentera &mdash; is unreachable by car or scooter.</p>
     <p>At <strong>Just Enjoy Ibiza</strong>, we&rsquo;ve been chartering boats for over ten years from our base in Marina Botafoch. Our fleet ranges from family-friendly speedboats at &euro;762/day to premium yachts up to 28 meters at &euro;12,950/day &mdash; with or without a professional captain. Every charter is designed around <strong>you</strong>: your route, your stops, your lunch.</p>
-    <p>Whether you&rsquo;re looking for an <strong>Ibiza boat trip</strong> with the family, a <strong>boat hire</strong> for a bachelorette party, or a quiet <strong>day charter</strong> with friends, this is what you need to know &mdash; and how to book in under a minute.</p>
+    <p>Whether you&rsquo;re looking for an <strong>Ibiza boat trip</strong> with the family, a <strong>boat hire</strong> for a bachelorette party, or a quiet <strong>day charter</strong> with friends &mdash; this is what you need to know.</p>
   </div>
 </section>
 
@@ -330,12 +540,16 @@
 
 <section class="routes-section">
   <div class="routes-inner">
-    <h2 class="section-title">Where you can go from Ibiza</h2>
-    <p class="routes-sub">A few of our most-requested destinations. All can be combined and customized to your perfect day on the water.</p>
+    <div class="routes-header">
+      <span class="pe">DESTINATIONS</span>
+      <h2 class="section-title">Where the boat can take you</h2>
+      <p class="routes-sub">A few of our most-requested itineraries. All can be combined and tailored to your perfect day on the water.</p>
+    </div>
     <div class="routes-grid">
       <div class="route-card">
         <img src="/assets/img/memories/image00043.jpeg" alt="Formentera by boat from Ibiza">
         <div class="route-card-content">
+          <span class="route-card-num">01 &middot; ROUTE</span>
           <h3>Formentera</h3>
           <p>Crystal-clear water and white sand &mdash; the single most requested destination from Ibiza.</p>
         </div>
@@ -343,6 +557,7 @@
       <div class="route-card">
         <img src="/assets/img/memories/image00054.jpeg" alt="Es Vedra sunset boat trip">
         <div class="route-card-content">
+          <span class="route-card-num">02 &middot; ROUTE</span>
           <h3>Es Vedra</h3>
           <p>The iconic rock at sunset &mdash; magnetic, mythical, unforgettable.</p>
         </div>
@@ -350,6 +565,7 @@
       <div class="route-card">
         <img src="/assets/img/memories/IMG_0635.jpeg" alt="Cala d'Hort Ibiza by boat">
         <div class="route-card-content">
+          <span class="route-card-num">03 &middot; ROUTE</span>
           <h3>Cala d&rsquo;Hort</h3>
           <p>Quiet southern bay, perfect for swimming and a long lunch on the water.</p>
         </div>
@@ -357,6 +573,7 @@
       <div class="route-card">
         <img src="/assets/img/memories/image00065.jpg" alt="Hidden coves of Ibiza">
         <div class="route-card-content">
+          <span class="route-card-num">04 &middot; SECRET</span>
           <h3>Hidden coves</h3>
           <p>Small inlets only reachable from the sea &mdash; private and quiet even in August.</p>
         </div>
@@ -367,9 +584,10 @@
 
 <section id="boats-preview" class="rental-section" style="padding:60px 20px;background:#fff">
   <div class="container">
-    <div style="text-align:center;margin-bottom:40px">
-      <h2 class="section-title" style="margin-bottom:8px">Boats for every occasion</h2>
-      <p style="color:#666;font-size:16px">Click any boat for full details &middot; <strong>8-hour standard charter</strong></p>
+    <div style="text-align:center;margin-bottom:50px;max-width:680px;margin-left:auto;margin-right:auto">
+      <span class="pe">THE FLEET</span>
+      <h2 class="section-title" style="margin-bottom:14px">Boats for every occasion</h2>
+      <p style="color:#666;font-size:16px;line-height:1.7">Click any boat for full details &middot; <strong>8-hour standard charter day</strong></p>
     </div>
 
     <div class="rental-boats-grid">
@@ -524,15 +742,16 @@
 
 <div class="more-boats-section">
   <h2 class="more-boats-count">+50<span>more</span></h2>
-  <p class="more-boats-description">Including yachts, powerboats and<br>catamarans.</p>
-  <a href="/#boats" class="more-boats-button">CHECK OUT ALL MODELS</a>
-  <div class="section-divider"></div>
+  <p class="more-boats-description">A fleet of over fifty yachts, powerboats and catamarans &mdash; every size, every style.</p>
+  <a href="/#boats" class="more-boats-button">VIEW THE FULL FLEET</a>
 </div>
 
 <section class="why-section">
   <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title special-title">Why Just Enjoy Ibiza?</h2>
+    <div style="text-align:center;max-width:680px;margin:0 auto">
+      <span class="pe">THE DIFFERENCE</span>
+      <h2 class="section-title special-title">Why Just Enjoy Ibiza</h2>
+    </div>
 
     <div class="features-container">
       <div class="feature">
@@ -565,6 +784,10 @@
         </p>
       </div>
     </div>
+
+    <div class="cta-container">
+      <a href="#contact" class="cta-button">CHECK AVAILABILITY</a>
+    </div>
   </div>
 </section>
 
@@ -591,8 +814,11 @@
 
 <section class="steps-section">
   <div class="steps-inner">
-    <h2>Book your boat in 4 simple steps</h2>
-    <p class="steps-sub">No travel agency, no middlemen. You speak directly with us from the first WhatsApp to the moment you step off the boat.</p>
+    <div style="text-align:center;max-width:680px;margin:0 auto">
+      <span class="pe">HOW TO BOOK</span>
+      <h2>Your charter in four steps</h2>
+      <p class="steps-sub">No travel agency, no middlemen. You speak directly with us from the first WhatsApp to the moment you step off the boat.</p>
+    </div>
     <div class="steps-grid">
       <div class="step-item">
         <div class="step-num">1</div>
@@ -620,7 +846,10 @@
 
 <section class="testimonials-section">
   <div class="container">
-    <h2 class="section-title">People who&rsquo;ve rented with us</h2>
+    <div style="text-align:center;max-width:680px;margin:0 auto 50px">
+      <span class="pe">CLIENT VOICES</span>
+      <h2 class="section-title">People who&rsquo;ve rented with us</h2>
+    </div>
     <div class="testimonials-container">
       <div class="testimonial-card">
         <div class="testimonial-content">
@@ -648,7 +877,8 @@
   <div class="container">
     <div class="faqs-container">
       <div class="faqs-column">
-        <h2 class="section-title">Boat rental Ibiza: FAQ</h2>
+        <span class="pe" style="margin-left:0;padding-left:28px;padding-right:0">QUESTIONS</span>
+        <h2 class="section-title" style="margin-top:14px">Boat rental Ibiza &mdash; FAQ</h2>
         <div class="faq-list">
 
           <div class="faq-item active">
@@ -721,10 +951,10 @@
   <div class="contact-container">
     <div class="contact-left">
       <div class="contact-left-content">
-        <div class="logo-small"><span class="text-logo-small">Just Enjoy Ibiza</span></div>
-        <h2 class="contact-heading"><span class="heading-accent">Rent your boat</span> for the perfect day in Ibiza</h2>
+        <span class="pe" style="margin-left:0;padding-left:28px;padding-right:0;margin-bottom:22px">CHARTER ENQUIRY</span>
+        <h2 class="contact-heading"><span class="heading-accent">Rent your boat</span><br>for the perfect day in Ibiza</h2>
         <p class="response-time">You&rsquo;ll hear from us in <strong>19 minutes</strong>.</p>
-        <p class="contact-or">Or <strong>WHATSAPP US</strong> directly at +34 642 45 39 52.</p>
+        <p class="contact-or">Or <strong>WhatsApp us</strong> directly at +34 642 45 39 52.</p>
       </div>
     </div>
     <div class="contact-right">
